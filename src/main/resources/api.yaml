@@ -1,0 +1,41 @@
+openapi: "3.0.3"
+info:
+  title: "DemoApplication API"
+  description: "DemoApplication API"
+  version: "1.0.0"
+servers:
+  - url: "https://DemoApplication"
+paths:
+  /api/text:
+    post:
+      summary: "POST api/text"
+      operationId: "saveText"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "string"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+    get:
+      summary: "GET api/text"
+      operationId: "getRandomText"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
